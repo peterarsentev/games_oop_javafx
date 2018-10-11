@@ -1,5 +1,7 @@
 package job4j.tictactoe;
 
+import java.util.function.Predicate;
+
 public class Logic3T {
     private final Figure3T[][] table;
 
@@ -7,25 +9,32 @@ public class Logic3T {
         this.table = table;
     }
 
-    public boolean isWinnerX() {
+    public boolean fillBy(Predicate<Figure3T> predicate, int startX, int startY, int deltaX, int deltaY) {
         boolean result = true;
-        for (int row = 0; row < this.table.length; row++) {
-            result = true;
-            for (int cell = 0; cell < this.table.length - 1; cell++) {
-                if (!(this.table[row][cell].hasMarkX() && this.table[row][cell + 1].hasMarkX())) {
-                    result = false;
-                    break;
-                }
-            }
-            if (result) {
+        for (int index = 0; index != this.table.length; index++) {
+            Figure3T cell = this.table[startX][startY];
+            startX += deltaX;
+            startY += deltaY;
+            if (!predicate.test(cell)) {
+                result = false;
                 break;
             }
         }
         return result;
     }
 
+    public boolean isWinnerX() {
+        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
+                this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) ||
+                this.fillBy(Figure3T::hasMarkX, 0,0, 1, 1) ||
+                this.fillBy(Figure3T::hasMarkX, this.table.length - 1 , 0, -1, 1);
+    }
+
     public boolean isWinnerO() {
-        return false;
+        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) ||
+                this.fillBy(Figure3T::hasMarkO, 0,0, 1, 1) ||
+                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
     }
 
     public boolean hasGap() {

@@ -7,12 +7,11 @@ public class Figure3T extends Rectangle {
     private boolean markO = false;
 
     public Figure3T() {
-        this(false);
     }
 
-    public Figure3T(boolean markX) {
+    public Figure3T(boolean markX, boolean markO) {
         this.markX = markX;
-        this.markO = !markX;
+        this.markO = markO;
     }
 
     public void take(boolean markX) {
