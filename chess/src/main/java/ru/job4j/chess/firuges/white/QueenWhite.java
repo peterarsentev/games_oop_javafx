@@ -9,10 +9,10 @@ import ru.job4j.chess.firuges.Figure;
  * @version $Id$
  * @since 0.1
  */
-public class QeenWhite implements Figure {
+public class QueenWhite implements Figure {
     private final Cell position;
 
-    public QeenWhite(final Cell position) {
+    public QueenWhite(final Cell position) {
         this.position = position;
     }
 
@@ -28,6 +28,6 @@ public class QeenWhite implements Figure {
 
     @Override
     public Figure copy(Cell dest) {
-        return new QeenWhite(dest);
+        return new QueenWhite(dest);
     }
 }
