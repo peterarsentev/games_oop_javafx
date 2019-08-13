@@ -3,6 +3,8 @@ package ru.job4j.puzzle;
 import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 
+import java.util.Arrays;
+
 /**
  * //TODO add comments.
  *
@@ -83,5 +85,10 @@ public class Logic {
             }
         }
         return table;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(this.convert());
     }
 }

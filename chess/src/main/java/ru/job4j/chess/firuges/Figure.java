@@ -9,9 +9,7 @@ public interface Figure {
         return String.format(
                 "%s.png", this.getClass().getSimpleName()
         );
-
     }
 
     Figure copy(Cell dest);
-
 }

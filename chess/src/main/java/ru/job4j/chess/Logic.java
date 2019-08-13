@@ -3,6 +3,7 @@ package ru.job4j.chess;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 /**
@@ -49,5 +50,12 @@ public class Logic {
             }
         }
         return rst;
+    }
+
+    @Override
+    public String toString() {
+        return "Logic{" +
+                "figures=" + Arrays.toString(this.figures) +
+                '}';
     }
 }
