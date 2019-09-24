@@ -124,7 +124,7 @@ public class Puzzle extends Application {
         this.generate(false, 5, grid);
     }
 
-    public void generate(boolean block, int total,  Group grid) {
+    public void generate(boolean block, int total, Group grid) {
         int count = total;
         final Random random = new Random();
         while (count > 0) {
