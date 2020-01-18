@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * //TODO add comments.
  *
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Aleksei Bulatov (bulatov2803@gmail.com)
  * @version $Id$
  * @since 0.1
  */
@@ -71,7 +71,35 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0; i < table.length; i++) {
+            if (table[i][i] == 1)  {
+                if (monoHorizontal(table, i) || monoVertical(table, i)) {
+                    result = true;
+                    break;
+                }
+            }
+        }
         return result;
+    }
+    public static boolean monoHorizontal(int [][] table, int  a) {
+        boolean result = true;
+        for (int i = 0; i < table.length; i++) {
+            if (table[a][i] != 1) {
+             result =  false;
+             break;
+            }
+        }
+     return  result;
+    }
+    public static boolean monoVertical(int [][] table, int  b) {
+        boolean result = true;
+        for (int i = 0; i < table.length; i++) {
+            if (table[i][b] != 1) {
+                result =  false;
+                break;
+            }
+        }
+        return  result;
     }
 
     public int[][] convert() {
