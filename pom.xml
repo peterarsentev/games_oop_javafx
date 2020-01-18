@@ -9,10 +9,10 @@
     <url>http://job4j.ru</url>
 
     <properties>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javafx.version>12</javafx.version>
+        <javafx.version>13</javafx.version>
     </properties>
 
     <modules>
