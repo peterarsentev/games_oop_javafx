@@ -6,6 +6,9 @@ jdk:
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
+before_install:
+  - chmod +x mvnw
+
 # Отправлять уведомление на почтуyouremail@smtp.ru(Изменить на свою) если сборка упала
 notifications:
   email:
