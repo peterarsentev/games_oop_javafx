@@ -59,7 +59,8 @@ public class Puzzle extends Application {
         );
         rect.setOnMouseReleased(
                 event -> {
-                    if (logic.move(this.extract(momento.getX(), momento.getY()), this.extract(event.getX(), event.getY()))) {
+                    if (logic.move(this.extract(momento.getX(), momento.getY()),
+                            this.extract(event.getX(), event.getY()))) {
                         rect.setX(((int) event.getX() / 40) * 40 + 5);
                         rect.setY(((int) event.getY() / 40) * 40 + 5);
                         checkWinner();
@@ -145,8 +146,8 @@ public class Puzzle extends Application {
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(
-                        position.x * 40 + 5,
-                        position.y * 40 + 5,
+                        position.getX() * 40 + 5,
+                        position.getY() * 40 + 5,
                         30,
                         figure.icon()
                 )

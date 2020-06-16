@@ -1,6 +1,6 @@
-package job4j.tictactoe.ships;
+package ru.job4j.tictactoe.ships;
 
-import job4j.tictactoe.Cell;
+import ru.job4j.tictactoe.Cell;
 
 import java.util.List;
 

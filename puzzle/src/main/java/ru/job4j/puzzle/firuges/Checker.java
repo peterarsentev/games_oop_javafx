@@ -15,7 +15,8 @@ public class Checker implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[0];
-        if ((Math.abs(source.x - dest.x) + Math.abs(source.y - dest.y)) == 1) {
+        if ((Math.abs(source.getX() - dest.getX())
+                + Math.abs(source.getY() - dest.getY())) == 1) {
             steps = new Cell[]{dest};
         }
         return steps;

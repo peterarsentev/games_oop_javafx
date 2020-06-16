@@ -47,89 +47,6 @@ public class PackMan extends Application {
         rect.setWidth(size);
         Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
         rect.setFill(new ImagePattern(img));
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
-                new EventHandler<ActionEvent>() {
-                    final Random rm = new Random();
-                    int deltaX = 1;
-                    int deltaY = 0;
-                    double positionX  = rect.getLayoutX();
-                    double positionY = rect.getLayoutY();
-
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        if (rect.getLayoutX() >= positionX + 40 || rect.getLayoutY() >= positionY + 40) {
-                            int direction = rm.nextInt(4);
-                            if (direction == 0) {
-                                deltaX = 0;
-                                deltaY = -1;
-                            } else if (direction == 1) {
-                                deltaX = 1;
-                                deltaY = 0;
-                            } else if (direction == 2) {
-                                deltaX = 0;
-                                deltaY = 1;
-                            } else if (direction == 3) {
-                                deltaX = -1;
-                                deltaY = 0;
-                            }
-                        }
-                        if (rect.getX() + deltaX * 50 > 0 && rect.getX() + 50 + deltaX * 50 < 250 &&
-                                rect.getY() + deltaY * 50 > 0 && rect.getY() + 50 + deltaY * 50 < 250) {
-                            if (deltaX != 0) {
-                                rect.setLayoutX(rect.getLayoutX() + deltaX);
-                            }
-                            if (deltaY != 0) {
-                                rect.setLayoutY(rect.getLayoutY() + deltaY);
-                            }
-                        }
-                    }
-                }
-        ));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-//        new Thread(
-//                () -> {
-//                    this.logic.fill(extract((double) x, (double) y));
-//                    final Random rm = new Random();
-//                    while (!Thread.currentThread().isInterrupted()) {
-//                        int direction = rm.nextInt(4);
-//                        int deltaX = 0;
-//                        int deltaY = 0;
-//                        if (direction == 0) {
-//                            deltaX = 0;
-//                            deltaY = -1;
-//                        } else if (direction == 1) {
-//                            deltaX = 1;
-//                            deltaY = 0;
-//                        } else if (direction == 2) {
-//                            deltaX = 0;
-//                            deltaY = 1;
-//                        } else if (direction == 3) {
-//                            deltaX = -1;
-//                            deltaY = 0;
-//                        }
-//                        try {
-//                            Cell source = extract(rect.getX(), rect.getY());
-//                            if (rect.getX() + deltaX * 50 > 0 && rect.getX() + 50 + deltaX * 50 < 250 &&
-//                                    rect.getY() + deltaY * 50 > 0 && rect.getY() + 50 + deltaY * 50 < 250 &&
-//                                    this.logic.move(extract(rect.getX() + deltaX * 40, rect.getY() + deltaY * 40))){
-//                                for (int step = 0; step != 40; step++) {
-//                                    if (deltaX != 0) {
-//                                        rect.setX(rect.getX() + deltaX);
-//                                    }
-//                                    if (deltaY != 0) {
-//                                        rect.setY(rect.getY() + deltaY);
-//                                    }
-//                                    Thread.sleep(20);
-//                                }
-//                                this.logic.clean(source);
-//                            }
-//                        } catch (InterruptedException e) {
-//                            Thread.currentThread().interrupt();
-//                        }
-//                    }
-//                }
-//        ).start();
         return rect;
     }
 
@@ -173,13 +90,12 @@ public class PackMan extends Application {
 //        this.add(new Block(new Cell(4, 4)), grid);
     }
 
-
     public void add(Figure figure, Group grid) {
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(
-                        position.x * 40 + 5,
-                        position.y * 40 + 5,
+                        position.getX() * 40 + 5,
+                        position.getY() * 40 + 5,
                         30,
                         figure.icon()
                 )

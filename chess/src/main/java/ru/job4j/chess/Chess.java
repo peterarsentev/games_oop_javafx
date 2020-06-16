@@ -60,7 +60,9 @@ public class Chess extends Application {
         );
         rect.setOnMouseReleased(
                 event -> {
-                    if (logic.move(this.findBy(momento.getX(), momento.getY()), this.findBy(event.getX(), event.getY()))) {
+                    if (logic.move(
+                            this.findBy(momento.getX(), momento.getY()),
+                            this.findBy(event.getX(), event.getY()))) {
                         rect.setX(((int) event.getX() / 40) * 40 + 5);
                         rect.setY(((int) event.getY() / 40) * 40 + 5);
                     } else {
@@ -156,8 +158,8 @@ public class Chess extends Application {
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(
-                        position.x * 40 + 5,
-                        position.y * 40 + 5,
+                        position.getX() * 40 + 5,
+                        position.getY() * 40 + 5,
                         30,
                         figure.icon()
                 )
@@ -169,7 +171,7 @@ public class Chess extends Application {
         int x = (int) graphX / 40;
         int y = (int) graphY / 40;
         for (Cell cell : Cell.values()) {
-            if (cell.x == x && cell.y == y) {
+            if (cell.getX() == x && cell.getY() == y) {
                 rst = cell;
                 break;
             }

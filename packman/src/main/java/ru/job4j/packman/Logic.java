@@ -25,13 +25,14 @@ public class Logic {
     }
 
     public boolean fill(Cell cell) {
-        return this.board[cell.y][cell.x].tryLock();
+        return this.board[cell.getY()][cell.getY()].tryLock();
     }
 
     public boolean move(Cell dest) {
         boolean result = false;
         try {
-            result = this.board[dest.y][dest.x].tryLock(1000, TimeUnit.MILLISECONDS);
+            result = this.board[dest.getY()][dest.getX()]
+                    .tryLock(1000, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,6 +40,6 @@ public class Logic {
     }
 
     public void clean(Cell source) {
-        this.board[source.y][source.x].unlock();
+        this.board[source.getY()][source.getX()].unlock();
     }
 }

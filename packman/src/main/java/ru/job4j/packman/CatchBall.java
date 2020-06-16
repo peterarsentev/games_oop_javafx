@@ -1,6 +1,7 @@
 package ru.job4j.packman;
 
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -23,21 +24,21 @@ public class CatchBall extends Application {
         canvas.getChildren().add(ball);
         List<Circle> apples = generateApples();
         canvas.getChildren().addAll(apples);
-        scene.addEventFilter(KeyEvent.KEY_PRESSED,
-                event -> {
-                    int deltaX = 0;
-                    int deltaY = 0;
-                    switch (event.getCode()) {
-                        case RIGHT -> deltaX = 5;
-                        case LEFT -> deltaX = -5;
-                        case UP -> deltaY = -5;
-                        case DOWN -> deltaY = 5;
-                    }
-                    ball.setCenterX(ball.getTranslateX() + ball.getCenterX() + deltaX);
-                    ball.setCenterY(ball.getTranslateY() + ball.getCenterY() + deltaY);
-                    catchEnemy(ball, apples, canvas);
-                }
-        );
+//        scene.addEventFilter(KeyEvent.KEY_PRESSED,
+//                event -> {
+//                    int deltaX = 0;
+//                    int deltaY = 0;
+//                    switch (event.getCode()) {
+//                        case RIGHT -> deltaX = 5;
+//                        case LEFT -> deltaX = -5;
+//                        case UP -> deltaY = -5;
+//                        case DOWN -> deltaY = 5;
+//                    }
+//                    ball.setCenterX(ball.getTranslateX() + ball.getCenterX() + deltaX);
+//                    ball.setCenterY(ball.getTranslateY() + ball.getCenterY() + deltaY);
+//                    catchEnemy(ball, apples, canvas);
+//                }
+//        );
         stage.setScene(scene);
         stage.show();
         stage.setTitle("PackMan minimal");

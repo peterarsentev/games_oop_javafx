@@ -1,20 +1,15 @@
-package job4j.tictactoe;
+package ru.job4j.tictactoe;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -95,13 +90,14 @@ public class SeaBattle extends Application {
         rect.setOnMouseReleased(
                 event -> {
                     rect.setX((((int) event.getX() / 25) * 25));
-                    rect.setY(((int) event.getY() / 25)* 25);
+                    rect.setY(((int) event.getY() / 25) * 25);
                 }
         );
         rect.setOnMouseClicked(
                 event -> {
                     if (event.getButton() != MouseButton.PRIMARY) {
-                        Rectangle momento = new Rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                        Rectangle momento = new Rectangle(rect.getX(),
+                                rect.getY(), rect.getWidth(), rect.getHeight());
                         rect.setWidth(momento.getHeight());
                         rect.setHeight(momento.getWidth());
                     }
