@@ -1,7 +1,6 @@
-package ru.job4j.puzzle;
+package ru.job4j.packman;
 
-import ru.job4j.puzzle.firuges.Cell;
-import ru.job4j.puzzle.firuges.Figure;
+import ru.job4j.packman.firuges.Cell;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;

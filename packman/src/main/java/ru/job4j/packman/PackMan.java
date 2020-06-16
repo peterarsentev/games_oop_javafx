@@ -1,4 +1,4 @@
-package ru.job4j.puzzle;
+package ru.job4j.packman;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -8,7 +8,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -18,10 +17,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import ru.job4j.puzzle.firuges.Block;
-import ru.job4j.puzzle.firuges.Cell;
-import ru.job4j.puzzle.firuges.Checker;
-import ru.job4j.puzzle.firuges.Figure;
+import ru.job4j.packman.firuges.Block;
+import ru.job4j.packman.firuges.Cell;
+import ru.job4j.packman.firuges.Figure;
 
 import java.util.Random;
 

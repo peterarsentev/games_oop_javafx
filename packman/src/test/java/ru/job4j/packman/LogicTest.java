@@ -1,4 +1,4 @@
-package ru.job4j.puzzle;
+package ru.job4j.packman;
 
 public class LogicTest {
 }

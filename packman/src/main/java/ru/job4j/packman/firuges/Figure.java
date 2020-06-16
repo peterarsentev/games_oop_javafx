@@ -1,4 +1,4 @@
-package ru.job4j.puzzle.firuges;
+package ru.job4j.packman.firuges;
 
 public interface Figure {
     default boolean movable() {

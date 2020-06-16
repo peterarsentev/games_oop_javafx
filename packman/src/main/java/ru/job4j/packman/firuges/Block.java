@@ -1,4 +1,4 @@
-package ru.job4j.puzzle.firuges;
+package ru.job4j.packman.firuges;
 
 public class Block implements Figure {
     private final Cell position;
