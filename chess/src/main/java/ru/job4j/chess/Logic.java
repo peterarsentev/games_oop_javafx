@@ -4,7 +4,6 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * //TODO add comments.
@@ -21,41 +20,31 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
-    public boolean move(Cell source, Cell dest) {
-        boolean rst = false;
+    public void move(Cell source, Cell dest)
+            throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
         int index = this.findBy(source);
-        if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
-            }
+        Cell[] steps = this.figures[index].way(source, dest);
+        if (!isFree(steps)) {
+            throw new OccupiedCellException();
         }
-        return rst;
+        this.figures[index] = this.figures[index].copy(dest);
+    }
+
+    private boolean isFree(Cell[] steps) {
+        return true;
     }
 
     public void clean() {
-        for (int position = 0; position != this.figures.length; position++) {
-            this.figures[position] = null;
-        }
+        Arrays.fill(this.figures, null);
         this.index = 0;
     }
 
-    private int findBy(Cell cell) {
-        int rst = -1;
+    private int findBy(Cell cell) throws FigureNotFoundException {
         for (int index = 0; index != this.figures.length; index++) {
             if (this.figures[index] != null && this.figures[index].position().equals(cell)) {
-                rst = index;
-                break;
+                return index;
             }
         }
-        return rst;
-    }
-
-    @Override
-    public String toString() {
-        return "Logic{"
-                + "figures=" + Arrays.toString(this.figures)
-                + '}';
+        throw new FigureNotFoundException();
     }
 }
