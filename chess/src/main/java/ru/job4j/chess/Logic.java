@@ -17,17 +17,17 @@ public class Logic {
     private int index = 0;
 
     public void add(Figure figure) {
-        this.figures[this.index++] = figure;
+        figures[index++] = figure;
     }
 
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
-        int index = this.findBy(source);
-        Cell[] steps = this.figures[index].way(source, dest);
+        int index = findBy(source);
+        Cell[] steps = figures[index].way(source, dest);
         if (!isFree(steps)) {
             throw new OccupiedCellException();
         }
-        this.figures[index] = this.figures[index].copy(dest);
+        figures[index] = figures[index].copy(dest);
     }
 
     private boolean isFree(Cell[] steps) {
@@ -35,13 +35,13 @@ public class Logic {
     }
 
     public void clean() {
-        Arrays.fill(this.figures, null);
-        this.index = 0;
+        Arrays.fill(figures, null);
+        index = 0;
     }
 
     private int findBy(Cell cell) throws FigureNotFoundException {
-        for (int index = 0; index != this.figures.length; index++) {
-            if (this.figures[index] != null && this.figures[index].position().equals(cell)) {
+        for (int index = 0; index != figures.length; index++) {
+            if (figures[index] != null && figures[index].position().equals(cell)) {
                 return index;
             }
         }

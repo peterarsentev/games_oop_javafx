@@ -9,7 +9,7 @@ public interface Figure {
 
     default String icon() {
         return String.format(
-                "%s.png", this.getClass().getSimpleName()
+                "%s.png", getClass().getSimpleName()
         );
     }
 

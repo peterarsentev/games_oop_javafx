@@ -12,13 +12,13 @@ import ru.job4j.chess.firuges.Figure;
 public class KingWhite implements Figure {
     private final Cell position;
 
-    public KingWhite(final Cell position) {
-        this.position = position;
+    public KingWhite(final Cell ps) {
+        position = ps;
     }
 
     @Override
     public Cell position() {
-        return this.position;
+        return position;
     }
 
     @Override

@@ -12,13 +12,13 @@ import ru.job4j.chess.firuges.Figure;
 public class RookBlack implements Figure {
     private final Cell position;
 
-    public RookBlack(final Cell position) {
-        this.position = position;
+    public RookBlack(final Cell ps) {
+        position = ps;
     }
 
     @Override
     public Cell position() {
-        return this.position;
+        return position;
     }
 
     @Override

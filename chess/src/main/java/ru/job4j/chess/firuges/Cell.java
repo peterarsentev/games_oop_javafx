@@ -13,9 +13,9 @@ public enum Cell {
     private final int x;
     private final int y;
 
-    Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
+    Cell(int cx, int cy) {
+        x = cx;
+        y = cy;
     }
 
     public int getX() {
