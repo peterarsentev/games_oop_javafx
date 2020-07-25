@@ -22,7 +22,7 @@ public class KingBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
+    public Cell[] way(Cell dest) {
         return new Cell[] {
                 dest
         };
