@@ -7,7 +7,7 @@ public interface Figure {
 
     Cell position();
 
-    Cell[] way(Cell source, Cell dest);
+    Cell[] way(Cell dest);
 
     default String icon() {
         return String.format(

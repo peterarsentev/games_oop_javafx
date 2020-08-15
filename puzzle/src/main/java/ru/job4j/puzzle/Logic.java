@@ -22,7 +22,7 @@ public class Logic {
         boolean rst = false;
         int index = findBy(source);
         if (index != -1) {
-            Cell[] steps = figures[index].way(source, dest);
+            Cell[] steps = figures[index].way(dest);
             if (isFree(steps)) {
                 rst = true;
                 figures[index] = figures[index].copy(dest);
