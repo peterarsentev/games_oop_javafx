@@ -1,4 +1,4 @@
-package ru.job4j.puzzle.firuges;
+package ru.job4j.packman.firuges;
 
 import java.util.Objects;
 

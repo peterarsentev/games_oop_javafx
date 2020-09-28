@@ -12,18 +12,20 @@ import ru.job4j.chess.firuges.Figure;
 public class BishopWhite implements Figure {
     private final Cell position;
 
-    public BishopWhite(final Cell position) {
-        this.position = position;
+    public BishopWhite(final Cell ps) {
+        position = ps;
     }
 
     @Override
     public Cell position() {
-        return this.position;
+        return position;
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] { dest };
+    public Cell[] way(Cell dest) {
+        return new Cell[] {
+                dest
+        };
     }
 
     @Override

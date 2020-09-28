@@ -1,10 +1,13 @@
-package ru.job4j.puzzle;
+package ru.job4j.packman;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -13,14 +16,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import ru.job4j.puzzle.firuges.Block;
-import ru.job4j.puzzle.firuges.Cell;
-import ru.job4j.puzzle.firuges.Checker;
-import ru.job4j.puzzle.firuges.Figure;
+import javafx.util.Duration;
+import ru.job4j.packman.firuges.Block;
+import ru.job4j.packman.firuges.Cell;
+import ru.job4j.packman.firuges.Figure;
 
 import java.util.Random;
 
-public class Puzzle extends Application {
+public class PackMan extends Application {
     private static final String JOB4J = "Пазлы на www.job4j.ru";
     private final int size = 5;
     private final Logic logic = new Logic(size);
@@ -44,44 +47,7 @@ public class Puzzle extends Application {
         rect.setWidth(size);
         Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
         rect.setFill(new ImagePattern(img));
-        final Rectangle momento = new Rectangle(x, y);
-        rect.setOnDragDetected(
-                event -> {
-                    momento.setX(event.getX());
-                    momento.setY(event.getY());
-                }
-        );
-        rect.setOnMouseDragged(
-                event -> {
-                    rect.setX(event.getX() - size / 2);
-                    rect.setY(event.getY() - size / 2);
-                }
-        );
-        rect.setOnMouseReleased(
-                event -> {
-                    if (logic.move(this.extract(momento.getX(), momento.getY()),
-                            this.extract(event.getX(), event.getY()))) {
-                        rect.setX(((int) event.getX() / 40) * 40 + 5);
-                        rect.setY(((int) event.getY() / 40) * 40 + 5);
-                        checkWinner();
-                    } else {
-                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
-                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
-                    }
-                }
-        );
         return rect;
-    }
-
-    private void checkWinner() {
-        if (this.logic.isWin()) {
-            logic.toString();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(JOB4J);
-            alert.setHeaderText(null);
-            alert.setContentText("Пазл решен! Начните новую Игру!");
-            alert.showAndWait();
-        }
     }
 
     private Group buildGrid() {
@@ -119,30 +85,12 @@ public class Puzzle extends Application {
 
     private void refresh(final BorderPane border) {
         Group grid = this.buildGrid();
-        this.logic.clean();
         border.setCenter(grid);
-        this.generate(true, 6, grid);
-        this.generate(false, 5, grid);
-    }
-
-    public void generate(boolean block, int total, Group grid) {
-        int count = total;
-        final Random random = new Random();
-        while (count > 0) {
-            Cell position = new Cell(random.nextInt(size), random.nextInt(size));
-            if (this.logic.isFree(position)) {
-                if (block) {
-                    this.add(new Block(position), grid);
-                } else {
-                    this.add(new Checker(position), grid);
-                }
-                count--;
-            }
-        }
+        this.add(new Block(new Cell(0, 0)), grid);
+//        this.add(new Block(new Cell(4, 4)), grid);
     }
 
     public void add(Figure figure, Group grid) {
-        this.logic.add(figure);
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(

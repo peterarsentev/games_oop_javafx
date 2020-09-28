@@ -12,18 +12,20 @@ import ru.job4j.chess.firuges.Figure;
 public class QueenWhite implements Figure {
     private final Cell position;
 
-    public QueenWhite(final Cell position) {
-        this.position = position;
+    public QueenWhite(final Cell ps) {
+        position = ps;
     }
 
     @Override
     public Cell position() {
-        return this.position;
+        return position;
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] { dest };
+    public Cell[] way(Cell dest) {
+        return new Cell[] {
+                dest
+        };
     }
 
     @Override
