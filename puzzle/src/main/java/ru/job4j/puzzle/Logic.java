@@ -30,7 +30,7 @@ public class Logic {
         boolean rst = false;
         int index = this.findBy(source);
         if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
+            Cell[] steps = this.figures[index].way(source);
             if (this.isFree(steps)) {
                 rst = true;
                 this.figures[index] = this.figures[index].copy(dest);
