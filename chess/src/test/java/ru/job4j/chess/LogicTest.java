@@ -7,7 +7,6 @@ import ru.job4j.chess.firuges.black.BishopBlack;
 import ru.job4j.chess.firuges.black.RookBlack;
 
 
-
 public class LogicTest {
 
     @Test(expected = FigureNotFoundException.class)
@@ -27,7 +26,7 @@ public class LogicTest {
         logic.move(Cell.C1, Cell.A3);
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = ImpossibleMoveException.class)
     public void moveIsImpossible()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException, IllegalStateException {
         Logic logic = new Logic();

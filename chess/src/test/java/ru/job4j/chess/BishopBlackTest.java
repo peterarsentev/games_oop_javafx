@@ -24,15 +24,15 @@ public class BishopBlackTest {
     }
 
     @Test
-    public void wayBishop() {
+    public void wayBishop() throws ImpossibleMoveException {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         Cell[] rsl = bishopBlack.way(Cell.G5);
         assertThat(rsl, is(new Cell[]{Cell.D2, Cell.E3, Cell.F4, Cell.G5}));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = ImpossibleMoveException.class)
     public void wayBishopFalse()
-            throws IllegalStateException {
+            throws ImpossibleMoveException {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         bishopBlack.way(Cell.G4);
     }
