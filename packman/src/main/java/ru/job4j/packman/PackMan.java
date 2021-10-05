@@ -87,7 +87,6 @@ public class PackMan extends Application {
         Group grid = this.buildGrid();
         border.setCenter(grid);
         this.add(new Block(new Cell(0, 0)), grid);
-//        this.add(new Block(new Cell(4, 4)), grid);
     }
 
     public void add(Figure figure, Group grid) {

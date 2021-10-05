@@ -5,7 +5,6 @@ import ru.job4j.tictactoe.Cell;
 import java.util.List;
 
 /**
- * //TODO add comments.
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
