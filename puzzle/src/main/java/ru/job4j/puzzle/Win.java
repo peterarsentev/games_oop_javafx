@@ -20,7 +20,7 @@ public class Win {
         return rsl;
     }
 
-    public static boolean checkVLine(int[][] board){
+    public static boolean checkVLine(int[][] board) {
         boolean rsl = true;
         for (int j = 0; j < board.length; j++) {
             if (board[0][j] == 1) {
