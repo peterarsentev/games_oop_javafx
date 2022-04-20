@@ -39,7 +39,7 @@ public class Win {
     public static int findHLine(int[][] board) {
         int rsl = 0;
         for (int i = 0; i < board.length; i++) {
-            if(board[i][0] == 1) {
+            if (board[i][0] == 1) {
                 rsl = i;
                 break;
             }
@@ -50,7 +50,7 @@ public class Win {
     public static int findVLine(int[][] board) {
         int rsl = 0;
         for (int i = 0; i < board.length; i++) {
-            if(board[0][i] == 1) {
+            if (board[0][i] == 1) {
                 rsl = i;
                 break;
             }
