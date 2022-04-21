@@ -4,7 +4,7 @@ public class Win {
     public static boolean check(int[][] board) {
         boolean rsl = false;
         for (int i = 0; i < board.length; i++) {
-            if (monoHLine(board, i) || monoVLine(board, i)) {
+            if (board[i][i] == 1 && monoHLine(board, i) || monoVLine(board, i)) {
                 rsl = true;
                 break;
             }
