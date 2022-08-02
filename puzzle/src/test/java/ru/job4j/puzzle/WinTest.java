@@ -1,12 +1,10 @@
 package ru.job4j.puzzle;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
-@Ignore
+@Disabled("Тесты отключены. Удалить аннотацию после реализации метода check()")
 public class WinTest {
     @Test
     public void whenVerticalWin() {
@@ -17,7 +15,7 @@ public class WinTest {
                 {0, 0, 1, 0, 0},
                 {0, 0, 1, 0, 0},
         };
-        assertThat(Win.check(board), is(true));
+        assertThat(Win.check(board)).isTrue();
     }
 
     @Test
@@ -29,7 +27,7 @@ public class WinTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
         };
-        assertThat(Win.check(board), is(true));
+        assertThat(Win.check(board)).isTrue();
     }
 
     @Test
@@ -41,7 +39,7 @@ public class WinTest {
                 {0, 0, 0, 1, 0},
                 {0, 0, 0, 0, 0},
         };
-        assertThat(Win.check(board), is(false));
+        assertThat(Win.check(board)).isFalse();
     }
 
     @Test
@@ -53,6 +51,6 @@ public class WinTest {
                 {0, 0, 0, 1, 0},
                 {1, 1, 1, 1, 0},
         };
-        assertThat(Win.check(board), is(false));
+        assertThat(Win.check(board)).isFalse();
     }
 }
