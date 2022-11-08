@@ -23,7 +23,7 @@ public class BishopBlack implements Figure {
      * @throws ImpossibleMoveException исключение, если пользователь сделал неверный ход
      */
     @Override
-    public Cell[] way(Cell dest) throws ImpossibleMoveException {
+    public Cell[] way(Cell dest) {
         if (!isDiagonal(position, dest)) {
             throw new ImpossibleMoveException(
                     String.format("Could not way by diagonal from %s to %s", position, dest)
@@ -43,6 +43,18 @@ public class BishopBlack implements Figure {
             steps[index] = Cell.findBy(positionX, positionY);
         }
         return steps;
+    }
+
+    /**
+     * Для валидации входных параметров
+     * @param source начальная точка
+     * @param dest до куда идет фигура
+     * @return проверку результата
+     */
+    public boolean isDiagonal(Cell source, Cell dest) {
+        int destXIf = Math.abs(source.getX() - dest.getX());
+        int destYIf = Math.abs(source.getY() - dest.getY());
+        return destXIf == destYIf;
     }
 
     @Override
