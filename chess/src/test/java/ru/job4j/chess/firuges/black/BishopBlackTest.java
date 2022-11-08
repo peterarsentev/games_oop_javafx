@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 
-import java.security.cert.CRL;
-import java.util.Arrays;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
