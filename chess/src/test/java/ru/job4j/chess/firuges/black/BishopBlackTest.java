@@ -18,4 +18,15 @@ class BishopBlackTest {
         BishopBlack bishopBlack = new BishopBlack(start);
         assertThat(bishopBlack.position(), is(start));
     }
+
+    /**
+     * Создаем объект слона, вызываем  у него метод copy.
+     * проверяем, что, возвращенный объект имеет правильную позицию.
+     */
+    @Test
+    public void whenCorrectCopy() {
+        Cell step = Cell.A2;
+        BishopBlack bishopBlack = new BishopBlack(Cell.A2);
+        assertThat(bishopBlack.copy(step).position(), is(step));
+    }
 }
