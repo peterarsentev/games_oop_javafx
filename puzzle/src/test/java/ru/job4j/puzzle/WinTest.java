@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled("Тесты отключены. Удалить аннотацию после реализации метода check()")
 public class WinTest {
     @Test
     public void whenVerticalWin() {
