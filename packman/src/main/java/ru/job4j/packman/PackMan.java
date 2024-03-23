@@ -1,10 +1,6 @@
 package ru.job4j.packman;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,17 +12,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import ru.job4j.packman.firuges.Block;
-import ru.job4j.packman.firuges.Cell;
-import ru.job4j.packman.firuges.Figure;
-
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class PackMan extends Application {
-    private static final String JOB4J = "Пазлы на www.job4j.ru";
-    private final int size = 5;
-    private final Logic logic = new Logic(size);
+    private static final String JOB4J = "Snake";
+    private final int size = 10;
+    private List<Rectangle> snake = new ArrayList<>();
+
+    enum Direction {
+        LEFT, RIGHT, UP, DOWN
+    }
+
+    private volatile Direction direction = Direction.RIGHT;
 
     private Rectangle buildRectangle(int x, int y, int size) {
         Rectangle rect = new Rectangle();
@@ -39,13 +38,13 @@ public class PackMan extends Application {
         return rect;
     }
 
-    private Rectangle buildFigure(int x, int y, int size, String image) {
+    private Rectangle block(int x, int y) {
         Rectangle rect = new Rectangle();
-        rect.setX(x);
-        rect.setY(y);
-        rect.setHeight(size);
-        rect.setWidth(size);
-        Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
+        rect.setX(x * 40 + 5);
+        rect.setY(y * 40 + 5);
+        rect.setHeight(30);
+        rect.setWidth(30);
+        Image img = new Image(this.getClass().getClassLoader().getResource("Block.png").toString());
         rect.setFill(new ImagePattern(img));
         return rect;
     }
@@ -69,14 +68,30 @@ public class PackMan extends Application {
         control.setPrefHeight(40);
         control.setSpacing(10.0);
         control.setAlignment(Pos.BASELINE_CENTER);
-        Button start = new Button("Начать");
-        start.setOnMouseClicked(
-                event -> this.refresh(border)
+        var right = new Button("Right");
+        right.setOnMouseClicked(
+                event -> direction = Direction.RIGHT
         );
-        control.getChildren().addAll(start);
+        var left = new Button("Left");
+        left.setOnMouseClicked(
+                event -> direction = Direction.LEFT
+        );
+        var up = new Button("Up");
+        up.setOnMouseClicked(
+                event -> direction = Direction.UP
+        );
+        var down = new Button("Down");
+        down.setOnMouseClicked(
+                event -> direction = Direction.DOWN
+        );
+        var moveBtn = new Button("Move");
+        moveBtn.setOnMouseClicked(
+                event -> move()
+        );
+        control.getChildren().addAll(right, left, up, down, moveBtn);
         border.setBottom(control);
         border.setCenter(this.buildGrid());
-        stage.setScene(new Scene(border, 400, 400));
+        stage.setScene(new Scene(border, 600, 600));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
         stage.show();
@@ -86,22 +101,29 @@ public class PackMan extends Application {
     private void refresh(final BorderPane border) {
         Group grid = this.buildGrid();
         border.setCenter(grid);
-        this.add(new Block(new Cell(0, 0)), grid);
-    }
-
-    public void add(Figure figure, Group grid) {
-        Cell position = figure.position();
-        grid.getChildren().add(
-                this.buildFigure(
-                        position.getX() * 40 + 5,
-                        position.getY() * 40 + 5,
-                        30,
-                        figure.icon()
-                )
+        IntStream.range(0, 8).forEach(
+                el -> snake.add(block(el, 0))
         );
+        grid.getChildren().addAll(snake);
     }
 
-    private Cell extract(double graphX, double graphY) {
-        return new Cell((int) graphX / 40, (int) graphY / 40);
+    private void move() {
+        var it = snake.listIterator();
+        while (it.hasNext()) {
+            var el = it.next();
+            if (it.hasNext()) {
+                var next = it.next();
+                el.setY(next.getY());
+                el.setX(next.getX());
+                it.previous();
+            } else {
+                switch (direction) {
+                    case RIGHT -> el.setX(el.getX() + 40);
+                    case LEFT -> el.setX(el.getX() - 40);
+                    case UP -> el.setY(el.getY() - 40);
+                    case DOWN -> el.setY(el.getY() + 40);
+                }
+            }
+        }
     }
 }

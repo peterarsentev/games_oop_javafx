@@ -21,6 +21,7 @@
         <module>seabattle</module>
         <module>puzzle</module>
         <module>packman</module>
+        <module>snake</module>
     </modules>
 
     <dependencies>
