@@ -2,7 +2,11 @@
 
 # games_oop_javafx
 This project demonstrates how to use Java Fx in OOP Style. 
-All examples are popular games. (Chess, TicTacToe, SeeBattle and etc)
+All examples are popular games. (Snake, Chess, TicTacToe, SeeBattle and etc)
+
+##Snake
+
+![ScreenShot](images/Snake.png)
 
 ##TicTacToe
 
