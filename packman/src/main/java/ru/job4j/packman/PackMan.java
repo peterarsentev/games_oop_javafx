@@ -122,6 +122,7 @@ public class PackMan extends Application {
                     case LEFT -> el.setX(el.getX() - 40);
                     case UP -> el.setY(el.getY() - 40);
                     case DOWN -> el.setY(el.getY() + 40);
+                    default -> throw new RuntimeException("Not found direction!");
                 }
             }
         }

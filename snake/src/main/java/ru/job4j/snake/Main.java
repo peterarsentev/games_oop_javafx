@@ -64,7 +64,7 @@ public class Main extends Application {
                 case "Right" : snake.directionTo(Direction.RIGHT); break;
                 case "Up" : snake.directionTo(Direction.UP); break;
                 case "Left" : snake.directionTo(Direction.LEFT); break;
-                case "Down" : snake.directionTo(Direction.DOWN); break;
+                default: snake.directionTo(Direction.DOWN); break;
             }
         });
         var grid = buildGrid();
