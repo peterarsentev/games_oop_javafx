@@ -3,7 +3,6 @@ package ru.job4j.snake;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -37,8 +36,8 @@ public class Main extends Application {
 
     private Rectangle block(Cell cell, Color color) {
         Rectangle rect = new Rectangle();
-        rect.setX(cell.getX() * 40 + 5);
-        rect.setY(cell.getY() * 40 + 5);
+        rect.setX(cell.x() * 40 + 5);
+        rect.setY(cell.y() * 40 + 5);
         rect.setHeight(30);
         rect.setWidth(30);
         rect.setFill(color);

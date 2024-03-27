@@ -1,12 +1,12 @@
 package ru.job4j.snake;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Snake {
-    private List<Cell> body = new ArrayList<>();
-    private Cell apple;
-    private Direction direction = Direction.RIGHT;
+    private final List<Cell> body = new CopyOnWriteArrayList<>();
+    private volatile Cell apple;
+    private volatile Direction direction = Direction.RIGHT;
 
     public Snake(List<Cell> cells) {
         body.addAll(cells);
@@ -23,10 +23,10 @@ public class Snake {
     boolean step() {
          var tail = body.get(body.size() - 1);
          var next = switch (direction) {
-             case RIGHT -> new Cell(tail.getX() + 1, tail.getY());
-             case LEFT -> new Cell(tail.getX() - 1, tail.getY());
-             case UP -> new Cell(tail.getX(), tail.getY() - 1);
-             case DOWN -> new Cell(tail.getX(), tail.getY() + 1);
+             case RIGHT -> new Cell(tail.x() + 1, tail.y());
+             case LEFT -> new Cell(tail.x() - 1, tail.y());
+             case UP -> new Cell(tail.x(), tail.y() - 1);
+             case DOWN -> new Cell(tail.x(), tail.y() + 1);
          };
          var eat = next.equals(apple);
          if (!eat) {
