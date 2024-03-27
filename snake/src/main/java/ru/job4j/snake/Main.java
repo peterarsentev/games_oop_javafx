@@ -70,7 +70,7 @@ public class Main extends Application {
         });
         var grid = buildGrid();
         border.setCenter(grid);
-        stage.setScene(new Scene(border, 600, 600));
+        stage.setScene(new Scene(border, 500, 500));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
         drawSnake(grid);
@@ -87,7 +87,7 @@ public class Main extends Application {
                                 }
                                 redrawSnake(grid);
                             });
-                            Thread.sleep(1000);
+                            Thread.sleep(500);
                         }
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
