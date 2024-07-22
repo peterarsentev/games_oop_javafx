@@ -1,7 +1,3 @@
-Sure, here's the updated README with the chat link at the beginning:
-
----
-
 # Welcome to Java Mastery!
 
 [Join our chat on Telegram!](https://t.me/job4j_java_mastery)
