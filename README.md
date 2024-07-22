@@ -31,7 +31,3 @@ If you have any suggestions or encounter any issues with this project, please cr
 - Tetris
 
 Stay tuned for more updates and improvements!
-
----
-
-Let me know if there are any other changes you'd like to make!
