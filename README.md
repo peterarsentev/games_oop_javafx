@@ -1,23 +1,41 @@
-This project demonstrates how to use Java Fx in OOP Style. 
-All examples are popular games. (Snake, Chess, TicTacToe, SeeBattle and etc)
+Sure, here's the updated README with the chat link at the beginning:
 
-If you have any suggestions about this project, please, creating a new GitHub issue https://github.com/peterarsentev/games_oop_javafx/issues
+---
 
+# Welcome to Java Mastery!
 
-## Snake
+[Join our chat on Telegram!](https://t.me/job4j_java_mastery)
 
-![ScreenShot](images/Snake.png)
+Welcome to "Java Mastery" – your ultimate chat for mastering Java programming! Whether you're a beginner starting from scratch or an experienced developer looking to deepen your knowledge, our chat community has you covered. Join us for in-depth discussions, coding challenges, best practices, and the latest updates in the world of Java. Let's code, learn, and grow together!
 
-## TicTacToe
+## About This Project
 
-![ScreenShot](images/TicTacToe.png)
+This project showcases how to use JavaFX in an object-oriented programming (OOP) style through a series of popular game examples. Dive into the code for classic games such as Snake, Chess, and Tic-Tac-Toe, and see how JavaFX can bring these games to life.
 
-## Chess
+If you have any suggestions or encounter any issues with this project, please create a new GitHub issue [here](https://github.com/peterarsentev/games_oop_javafx/issues).
 
-![ScreenShot](images/Chess.png)
+## Game Examples
 
-## TODO
+### Snake
+
+![Snake](images/Snake.png)
+
+### Tic-Tac-Toe
+
+![TicTacToe](images/TicTacToe.png)
+
+### Chess
+
+![Chess](images/Chess.png)
+
+## Upcoming Features
 
 - SeaBattle
-- PackMan
+- Pac-Man
 - Tetris
+
+Stay tuned for more updates and improvements!
+
+---
+
+Let me know if there are any other changes you'd like to make!

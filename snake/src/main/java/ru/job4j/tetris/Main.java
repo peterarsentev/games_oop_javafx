@@ -1,4 +1,4 @@
-package ru.job4j.snake;
+package ru.job4j.tetris;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -125,5 +125,10 @@ public class Main extends Application {
     private void redrawSnake(Group group) {
         group.getChildren().removeAll(snakePosition);
         drawSnake(group);
+    }
+
+    
+    public static void main(String[] args) {
+        Main.launch(args);
     }
 }

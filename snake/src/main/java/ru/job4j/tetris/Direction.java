@@ -1,4 +1,4 @@
-package ru.job4j.snake;
+package ru.job4j.tetris;
 
 enum Direction {
     LEFT, RIGHT, UP, DOWN

@@ -1,4 +1,4 @@
-package ru.job4j.snake;
+package ru.job4j.tetris;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -28,6 +28,7 @@ public class Snake {
              case UP -> new Cell(tail.x(), tail.y() - 1);
              case DOWN -> new Cell(tail.x(), tail.y() + 1);
          };
+       
          var eat = next.equals(apple);
          if (!eat) {
              body.remove(0);
