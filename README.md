@@ -1,6 +1,6 @@
 # Welcome to Java Mastery!
 
-[Join our chat on Telegram!](https://t.me/job4j_java_mastery)
+[Join our chat on Discord!](https://discord.gg/VEKvWyzt)
 
 Welcome to "Java Mastery" – your ultimate chat for mastering Java programming! Whether you're a beginner starting from scratch or an experienced developer looking to deepen your knowledge, our chat community has you covered. Join us for in-depth discussions, coding challenges, best practices, and the latest updates in the world of Java. Let's code, learn, and grow together!
 
