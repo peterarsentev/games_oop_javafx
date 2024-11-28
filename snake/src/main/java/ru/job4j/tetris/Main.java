@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class Main extends Application {
     private static final String JOB4J = "Snake";
-    private final int size = 10;
+    private static final int SIZE = 10;
     private final Snake snake = new Snake(List.of(
             new Cell(0, 0), new Cell(1, 0), new Cell(2, 0))
     );
@@ -46,8 +46,8 @@ public class Main extends Application {
 
     private Group buildGrid() {
         Group panel = new Group();
-        for (int y = 0; y != this.size; y++) {
-            for (int x = 0; x != this.size; x++) {
+        for (int y = 0; y != this.SIZE; y++) {
+            for (int x = 0; x != this.SIZE; x++) {
                 panel.getChildren().add(
                         this.buildRectangle(x, y, 40)
                 );
@@ -127,7 +127,6 @@ public class Main extends Application {
         drawSnake(group);
     }
 
-    
     public static void main(String[] args) {
         Main.launch(args);
     }

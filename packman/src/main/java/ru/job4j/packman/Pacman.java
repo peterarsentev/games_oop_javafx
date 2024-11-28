@@ -9,13 +9,19 @@ import java.util.Set;
 
 public class Pacman {
     private static final int PLAYER_SIZE = 40;
-    public GraphicsContext gc;
-    public double playerX;
-    public double playerY;
-    public double playerSpeed = 5;
-    public double mouthAngle = 45;
-    public boolean mouthOpening = true;
-    public double mouthDirection = 90;
+    private final GraphicsContext gc;
+    private double playerX;
+    private double playerY;
+    private final double playerSpeed = 5;
+    private double mouthAngle = 45;
+    private boolean mouthOpening = true;
+    private double mouthDirection = 90;
+
+    public Pacman(GraphicsContext gc, double playerX, double playerY) {
+        this.playerX = playerX;
+        this.playerY = playerY;
+        this.gc = gc;
+    }
 
     public void draw() {
         gc.setFill(Color.YELLOW);
@@ -71,9 +77,19 @@ public class Pacman {
         int gridXEnd = (int) ((x + PLAYER_SIZE - 1) / PLAYER_SIZE);
         int gridYEnd = (int) ((y + PLAYER_SIZE - 1) / PLAYER_SIZE);
 
-        if (gridXStart < 0 || gridXEnd >= maze.length || gridYStart < 0 || gridYEnd >= maze[0].length) {
+        if (gridXStart < 0 || gridXEnd >= maze.length
+                || gridYStart < 0 || gridYEnd >= maze[0].length) {
             return true;
         }
-        return maze[gridXStart][gridYStart] || maze[gridXEnd][gridYStart] || maze[gridXStart][gridYEnd] || maze[gridXEnd][gridYEnd];
+        return maze[gridXStart][gridYStart] || maze[gridXEnd][gridYStart]
+                || maze[gridXStart][gridYEnd] || maze[gridXEnd][gridYEnd];
+    }
+
+    public double getPlayerX() {
+        return playerX;
+    }
+
+    public double getPlayerY() {
+        return playerY;
     }
 }

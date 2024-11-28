@@ -1,29 +1,15 @@
 # Games in Java - Object-Oriented Programming with JavaFX
 
-This repository is designed to demonstrate core **Object-Oriented Programming (OOP)** concepts in Java using JavaFX through a series of popular game examples. The goal is to help developers learn and visualize OOP principles in action, from basic class structure to advanced inheritance and encapsulation.
-
-## About This Project
-
-Dive into the code for classic games like **Snake, Chess, Tic-Tac-Toe,** and **Pac-Man** to explore JavaFX's capabilities and understand how OOP principles can structure games effectively. Each game has been carefully crafted to illustrate specific OOP concepts, making it ideal for anyone wanting to learn Java through hands-on projects.
-
-If you have suggestions or encounter issues with this project, please [create a new GitHub issue](https://github.com/peterarsentev/games_oop_javafx/issues).
-
-If you’re looking to deepen your understanding of OOP in Java, 
-consider joining the course Mastering Object-Oriented Programming in Java. 
-This comprehensive, 104-lesson course is designed to build both a theoretical foundation 
-and practical skills essential for applying OOP in real-world scenarios.
-
-## Join for Free! ##
-
-**Contact me on Telegram:** [@parsentev](https://t.me/parsentev)
-
-Let me know if you'd like any further adjustments!
-
-## About the Course: *Mastering Object-Oriented Programming in Java*
+Hi, I'm Peter. I created this project
+to show my idea about
+how to use **Object-Oriented Programming (OOP)** concepts
+in Java using JavaFX through a series of popular game examples. 
 
 ### Course Overview
 
-This course, *Mastering Object-Oriented Programming in Java*, is designed to teach and reinforce the foundational concepts of **OOP in Java**. Through 104 structured lessons, you’ll gain both theoretical and practical skills essential for real-world applications.
+This course, *Mastering Object-Oriented Programming in Java*, 
+is designed to teach and reinforce the foundational concepts of **OOP in Java**. 
+Through 104 structured lessons, you’ll gain both theoretical and practical skills essential for real-world applications.
 
 ### Course Structure
 
@@ -36,13 +22,14 @@ Each lesson is organized into three main sections:
 
 Every solution you submit receives detailed, personalized feedback. This focuses on best practices and areas for improvement, ensuring continuous growth and a deep understanding of Java's OOP principles.
 
-### Ideal for
+### Join for free
 
-This course is perfect for students and developers looking to build a strong OOP foundation in Java, supported by structured lessons and expert feedback.
+In order to promote my course I have decided to start it for free,
+so if you want to join my course contact me on email: parsentev@yandex.ru
 
---- 
+How it will work. I will send you one lesson by email. Each lesson contains: theory, exercises and task.
+You have to solve the task and send it back to me so I can check it and give you feedback.
 
-Enhance your understanding of **Java OOP** with these interactive projects, and if you're interested, dive deeper with our course to truly master object-oriented programming.
 
 ## Game Examples
 

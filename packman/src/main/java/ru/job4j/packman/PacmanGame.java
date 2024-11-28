@@ -41,20 +41,16 @@ public class PacmanGame extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        walls = new Walls(WIDTH, HEIGHT, PLAYER_SIZE);
+        walls = new Walls(gc, WIDTH, HEIGHT, PLAYER_SIZE);
         walls.initializeMaze();
-        walls.gc = gc;
 
-        pellets = new Pellets(WIDTH, HEIGHT, PLAYER_SIZE, PELLET_SIZE);
+        pellets = new Pellets(gc, WIDTH, HEIGHT, PLAYER_SIZE, PELLET_SIZE);
         pellets.initializePellets(walls);
-        pellets.gc = gc;
 
-        enemies = new Enemies(WIDTH, HEIGHT, PLAYER_SIZE, ENEMY_SIZE, ENEMY_SPEED);
+        enemies = new Enemies(gc, PLAYER_SIZE, ENEMY_SIZE, ENEMY_SPEED);
         enemies.initializeEnemies(walls);
-        enemies.gc = gc;
 
-        pacman = initializePlayerPosition();
-        pacman.gc = gc;
+        pacman = initializePlayerPosition(gc);
 
         scene.setOnKeyPressed(event -> pressedKeys.add(event.getCode()));
         scene.setOnKeyReleased(event -> pressedKeys.remove(event.getCode()));
@@ -69,14 +65,14 @@ public class PacmanGame extends Application {
         timer.start();
     }
 
-    private Pacman initializePlayerPosition() {
+    private Pacman initializePlayerPosition(GraphicsContext gc) {
         for (int i = 0; i < walls.getMaze().length; i++) {
             for (int j = 0; j < walls.getMaze()[i].length; j++) {
                 if (!walls.getMaze()[i][j]) {
-                    var pacman = new Pacman();
-                    pacman.playerX = i * PLAYER_SIZE;
-                    pacman.playerY = j * PLAYER_SIZE;
-                    return pacman;
+                    return new Pacman(gc,
+                            i * PLAYER_SIZE,
+                            j * PLAYER_SIZE
+                    );
                 }
             }
         }

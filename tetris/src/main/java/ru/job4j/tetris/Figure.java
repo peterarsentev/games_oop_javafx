@@ -1,9 +1,7 @@
 package ru.job4j.tetris;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Figure {
     private List<Cell> body;
@@ -23,7 +21,6 @@ public class Figure {
         }
         body = newBody;
     }
-
 
     List<Cell> asCells() {
         return body;

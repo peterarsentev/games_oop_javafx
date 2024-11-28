@@ -10,17 +10,15 @@ import java.util.Set;
 public class Enemies {
     record Enemy(int x, int y) {
     }
-    public GraphicsContext gc;
-    private final int width;
-    private final int height;
+    private final GraphicsContext gc;
     private final int playerSize;
     private final int enemySize;
     private final int enemySpeed;
     private final Set<Enemy> enemies = new HashSet<>();
 
-    public Enemies(int width, int height, int playerSize, int enemySize, int enemySpeed) {
-        this.width = width;
-        this.height = height;
+    public Enemies(GraphicsContext gc,
+                   int playerSize, int enemySize, int enemySpeed) {
+        this.gc = gc;
         this.playerSize = playerSize;
         this.enemySize = enemySize;
         this.enemySpeed = enemySpeed;
@@ -42,8 +40,8 @@ public class Enemies {
         Set<Enemy> updatedEnemies = new HashSet<>();
 
         for (var enemy : enemies) {
-            double diffX = pacman.playerX - enemy.x();
-            double diffY = pacman.playerY - enemy.y();
+            double diffX = pacman.getPlayerX() - enemy.x();
+            double diffY = pacman.getPlayerY() - enemy.y();
 
             int newX = enemy.x();
             int newY = enemy.y();
@@ -51,14 +49,14 @@ public class Enemies {
             boolean moved = false;
 
             // Prioritize movement based on same position on one axis
-            if (enemy.x() == pacman.playerX) {
+            if (enemy.x() == pacman.getPlayerX()) {
                 // Same x position, move by y coordinate
                 double nextY = enemy.y() + Math.signum(diffY) * enemySpeed;
                 if (!isCollision(enemy.x(), nextY, walls) && !isEnemyCollision(newX, (int) nextY)) {
                     newY = (int) nextY;
                     moved = true;
                 }
-            } else if (enemy.y() == pacman.playerY) {
+            } else if (enemy.y() == pacman.getPlayerY()) {
                 // Same y position, move by x coordinate
                 double nextX = enemy.x() + Math.signum(diffX) * enemySpeed;
                 if (!isCollision(nextX, enemy.y(), walls) && !isEnemyCollision((int) nextX, newY)) {
@@ -70,14 +68,16 @@ public class Enemies {
                 if (Math.abs(diffX) <= Math.abs(diffY)) {
                     // Move by x coordinate
                     double nextX = enemy.x() + Math.signum(diffX) * enemySpeed;
-                    if (!isCollision(nextX, enemy.y(), walls) && !isEnemyCollision((int) nextX, newY)) {
+                    if (!isCollision(nextX, enemy.y(), walls)
+                            && !isEnemyCollision((int) nextX, newY)) {
                         newX = (int) nextX;
                         moved = true;
                     }
                 } else {
                     // Move by y coordinate
                     double nextY = enemy.y() + Math.signum(diffY) * enemySpeed;
-                    if (!isCollision(enemy.x(), nextY, walls) && !isEnemyCollision(newX, (int) nextY)) {
+                    if (!isCollision(enemy.x(), nextY, walls)
+                            && !isEnemyCollision(newX, (int) nextY)) {
                         newY = (int) nextY;
                         moved = true;
                     }
@@ -117,11 +117,14 @@ public class Enemies {
         int gridYStart = (int) (y / playerSize);
         int gridXEnd = (int) ((x + enemySize - 1) / playerSize);
         int gridYEnd = (int) ((y + enemySize - 1) / playerSize);
-
-        if (gridXStart < 0 || gridXEnd >= maze.length || gridYStart < 0 || gridYEnd >= maze[0].length) {
+        if (gridXStart < 0 || gridXEnd >= maze.length
+                || gridYStart < 0 || gridYEnd >= maze[0].length) {
             return true;
         }
-        return maze[gridXStart][gridYStart] || maze[gridXEnd][gridYStart] || maze[gridXStart][gridYEnd] || maze[gridXEnd][gridYEnd];
+        return maze[gridXStart][gridYStart]
+                || maze[gridXEnd][gridYStart]
+                || maze[gridXStart][gridYEnd]
+                || maze[gridXEnd][gridYEnd];
     }
 
     public void draw() {
@@ -130,8 +133,10 @@ public class Enemies {
             gc.fillArc(enemy.x(), enemy.y(), enemySize, enemySize, 0, 180, ArcType.ROUND);
             gc.fillRect(enemy.x(), enemy.y() + enemySize / 2, enemySize, enemySize / 2);
             gc.setFill(Color.WHITE);
-            gc.fillOval(enemy.x() + enemySize * 0.2, enemy.y() + enemySize * 0.2, enemySize * 0.2, enemySize * 0.2);
-            gc.fillOval(enemy.x() + enemySize * 0.6, enemy.y() + enemySize * 0.2, enemySize * 0.2, enemySize * 0.2);
+            gc.fillOval(enemy.x() + enemySize * 0.2,
+                    enemy.y() + enemySize * 0.2, enemySize * 0.2, enemySize * 0.2);
+            gc.fillOval(enemy.x() + enemySize * 0.6,
+                    enemy.y() + enemySize * 0.2, enemySize * 0.2, enemySize * 0.2);
             gc.setFill(Color.RED);
         }
     }
