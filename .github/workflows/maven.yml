@@ -29,3 +29,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+name: Java CI with Maven
+
